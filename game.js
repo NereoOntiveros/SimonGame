@@ -21,10 +21,11 @@ $(document).keypress(function() {
 $(".btn").on('click', function() {
   var userChosenColour = $(this).attr('id');
   userClickedPattern.push(userChosenColour);
-
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
-  checkAnswer(userClickedPattern.length - 1);
+  if (started) {
+    playSound(userChosenColour);
+    animatePress(userChosenColour);
+    checkAnswer(userClickedPattern.length - 1);
+  }
 
 });
 
@@ -86,10 +87,12 @@ function checkAnswer(currentLevel) {
   }
 
 
+
+
 }
 
-function startOver(){
-  level=0;
-  started=false;
-  gamePattern=[];
+function startOver() {
+  level = 0;
+  started = false;
+  gamePattern = [];
 }
